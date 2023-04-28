@@ -1,6 +1,7 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, Link } from "@mui/material";
 import styled from "styled-components";
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Link as RouterLink } from "react-router-dom";
 
 const SidePannelBox = styled(Box)`
   border-right: 1px solid black;
@@ -40,7 +41,15 @@ export default function SidePannel() {
   return (
     <SidePannelBox sx={{ width: { xs: "40px", sm: "80px" }}}>
       <SidePannelInner justifyContent="space-between" alignItems="center">
-        <Logo color="primary" variant="h1" sx={{ lineHeight: { xs: "40px", sm: "80px" }, fontSize: "24px" }}>NewsVoca</Logo>
+        <Link component={RouterLink} to="/" underline="none">
+          <Logo
+            color="primary"
+            variant="h1"
+            sx={{ lineHeight: { xs: "40px", sm: "80px" }, fontSize: "24px" }}
+          >
+            NewsVoca
+          </Logo>
+        </Link>
         <SubTitle paragraph sx={{ lineHeight: { xs: "40px", sm: "80px" }, fontSize: "13px"}}>Lorem ipsum dolor sit amet.</SubTitle>
         <InfoIcon />
       </SidePannelInner>

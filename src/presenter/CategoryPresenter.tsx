@@ -13,8 +13,8 @@ function MajorCategories({ majorCatList, selectedCat }: { majorCatList: Category
   return (
     <Box
       sx={{
-        marginRight: { xs: "8px", md: "16px" },
-        display: { xs: "none", md: "block" }
+        marginRight: "16px",
+        display: { xs: "none", lg: "block" }
       }}
     >
       <Button
@@ -54,8 +54,7 @@ function MinorCategories({ minorCatList }: { minorCatList: CategoryMinor[] }) {
   return (
     <Stack
       direction="row"
-      gap="16px"
-      sx={{ display: { xs: "none", md: "flex" } }}
+      sx={{ display: { xs: "none", lg: "flex" }, gap: "16px" }}
       flexWrap="wrap"
     >
       {minorCatList.map(cat =>
@@ -77,9 +76,9 @@ function MobileCategories({ majorCatList, minorCatList, selectedCat }: { majorCa
 
   return (
     <>
-    <Box sx={{ display: { xs: "block", md: "none" } }}>
+    <Box sx={{ display: { xs: "block", lg: "none" } }}>
       <Button
-        sx={{ fontWeight: "bold" }}
+        sx={{ fontSize: "20px", fontWeight: "bold" }}
         onClick={handleClick}
       >
         {selectedCat?.name}
