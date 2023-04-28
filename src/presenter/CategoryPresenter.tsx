@@ -139,7 +139,7 @@ export default function CategoryPresenter(props: CategoryPresenterProps) {
     } = props;
 
   return (
-    <Stack direction="row" alignItems="center">
+    <Stack direction="row" alignItems="center" sx={{ flexGrow: 1}}>
       <MajorCategories majorCatList={majorCategoryList} selectedCat={selectedMajorCat} />
       <MinorCategories minorCatList={minorCategoryList.filter(cat => cat.categoryMajor.id === selectedMajorCat?.id)} />
       <MobileCategories majorCatList={majorCategoryList} minorCatList={minorCategoryList} selectedCat={selectedMinorCat ?? selectedMajorCat}/>

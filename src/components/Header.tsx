@@ -1,4 +1,4 @@
-import { AppBar, Grid, Toolbar } from "@mui/material";
+import { AppBar, Button, ButtonGroup, Grid, Toolbar } from "@mui/material";
 import styled from "styled-components";
 import CategoryContainer from "../container/CategoryContainer";
 
@@ -11,8 +11,10 @@ export default function Header() {
     <AppBar position="sticky" color="secondary" sx={{ boxShadow: "none" }}>
       <Toolbar>
         <CategoryContainer />
-        {/* login signup */}
-        {/* profile */}
+        <ButtonGroup>
+          <Button>Login</Button>
+          <Button>Signup</Button>
+        </ButtonGroup>
       </Toolbar>
     </AppBar>
   );
