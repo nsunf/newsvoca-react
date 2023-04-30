@@ -12,13 +12,12 @@ function App() {
     <>
       <CssBaseline />
       <Container
-        sx={{ paddingLeft: { xs: "40px", sm: "80px" }, height: "2000px", border: "1px solid black" }}
+        sx={{ paddingLeft: { xs: "40px", sm: "80px" } }}
         maxWidth={false}
         disableGutters
       >
         <SidePannel />
         <Container
-          sx={{ height: "1200px" }}
           maxWidth={false}
           disableGutters
         >
@@ -27,6 +26,13 @@ function App() {
             <Route path="/:majorCat" element={<Header />} />
             <Route path="/:majorCat/:minorCat" element={<Header />} />
           </Routes>
+          <Container maxWidth={false}>
+            <Routes>
+              <Route path="/" element={<Home/>} />
+              <Route path="/:majorCat" element={<Home/>} />
+              <Route path="/:majorCat/:minorCat" element={<Home/>} />
+            </Routes>
+          </Container>
 
         </Container>
         {/* <Grid container sx={{ bgcolor: "orange", height: "1200px" }}>

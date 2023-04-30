@@ -1,0 +1,122 @@
+[
+  {
+    "id": 0,
+    "title": "Convicted terrorist pardoned in Hungary on eve of Pope’s visit",
+    "preview": "A far-right activist convicted of terrorism was among several prisoners pardoned in Hungary before the Pope’s official visit to the country this week, it has emerged.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429220302-01-pope-budapest-042923-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "Pope Francis meets with young people at the Papp László Sport Arena on April 29, 2023 in Budapest, Hungary.",
+    "url": "/article/world/0"
+  },
+  {
+    "id": 1,
+    "title": "‘Glory to Ukraine’: French artist C215 dedicates mural to executed Ukrainian POW",
+    "preview": "A mural depicting a fallen Ukrainian soldier executed by Russian forces in 2022 has appeared in the heart of Kyiv on the side of a government building.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429215335-01-ukraine-parliament-mural-042923.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "",
+    "url": "/article/world/1"
+  },
+  {
+    "id": 2,
+    "title": "Thousands of foreign nationals evacuated amid fighting and looting in Sudan despite truce",
+    "preview": "Thousands of foreign nationals have been evacuated from Sudan as clashes between two rival military factions vying for control of the country continue despite a supposed truce.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230428051858-03-sudan-conflict-fleeing-042623.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "British citizens seen boarding an RAF aircraft in Sudan for evacuation to Cyprus.",
+    "url": "/article/world/2"
+  },
+  {
+    "id": 3,
+    "title": "‘Even one American in Iraq is too much,’ Iran’s leader tells Iraqi president",
+    "preview": "Iranian Supreme Leader Ayatollah Ali Khamenei decried the presence of the US military in Iraq during a meeting with Iraqi President Abdul Latif Rashid in Tehran on Saturday.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429213738-iran-leader-americans-out-of-iraq-042923.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "Iraqi President Abdul Latif Rashid with Iran's Supreme Leader Ayatollah Ali Khamenei in Tehran, Iran, on April 29.",
+    "url": "/article/middleeast/3"
+  },
+  {
+    "id": 4,
+    "title": "Jailed Putin critic Navalny’s health is deteriorating, daughter tells CNN",
+    "preview": "The daughter of jailed Russian opposition figure Alexey Navalny says her father’s health is deteriorating.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230426180908-navalny-04-26-23.jpg?c=16x9&q=h_540,w_960,c_fill",
+    "repImgDesc": "Daughter of Alexey Navalny calls for his release",
+    "url": "/article/world/4"
+  },
+  {
+    "id": 5,
+    "title": "Starship could be ready to launch again in ‘six to eight weeks,’ Elon Musk says",
+    "preview": "Since SpaceX’s inaugural test flight of the most powerful rocket ever constructed, the company’s engineers, federal regulators and environmentalists have been trying to assess the aftermath of the spacecraft’s explosion and what happens next.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230420091544-02-spacex-starship-launch-0420-screenshot.jpg?c=16x9&q=h_540,w_960,c_fill",
+    "repImgDesc": "Watch SpaceX's uncrewed Starship explode shortly after liftoff",
+    "url": "/article/world/5"
+  },
+  {
+    "id": 6,
+    "title": "Take a good look at these strange-looking turtles. They could soon be extinct",
+    "preview": "One of the world’s most densely populated cities might seem an unlikely refuge for endangered wildlife.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230420233658-02-hk-turtles-cnn.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "",
+    "url": "/article/asia/6"
+  },
+  {
+    "id": 7,
+    "title": "Hundreds of evacuees land in Saudi Arabia as Sudan fighting enters third week",
+    "preview": "Hundreds of evacuees arrived in Saudi Arabia from Sudan as fierce fighting in the country between the army and a rival paramilitary group entered its third week, despite another attempt at a ceasefire.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429115156-01-sudan-evacuations-saudi-arabia-0329.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "Evacuees stand on a ferry as it transports some people across the Red Sea from Port Sudan to the Saudi King Faisal navy base in Jeddah, on April 29, 2023, during mass evacuations from Sudan.",
+    "url": "/article/africa/7"
+  },
+  {
+    "id": 8,
+    "title": "Suspected drone strike triggers massive fire in Russian-occupied Crimea",
+    "preview": "A suspected drone strike has sparked a huge fire at a fuel storage facility in the Russian-occupied Crimean port city of Sevastopol.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429034744-02-sevastopol-fire-042923.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "Smoke rises over a fuel tank following an alleged drone attack in Sevastopol, Crimea.",
+    "url": "/article/europe/8"
+  },
+  {
+    "id": 9,
+    "title": "The search for 100,000 new species in Earth’s oceans",
+    "preview": "In some ways, Earth’s oceans are as alien to us as distant moons in the solar system.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/220823083719-twilight-zone-11-1.jpg?c=16x9&q=h_540,w_960,c_fill",
+    "repImgDesc": "Scuba diving scientist shines a light on the world's deep sea reefs",
+    "url": "/article/world/9"
+  },
+  {
+    "id": 10,
+    "title": "Ukraine could launch its offensive against Russia any moment. Here’s what’s waiting",
+    "preview": "Ukraine says its preparations for a spring counter-offensive are almost complete. When it’s launched, probably in the south, it will mark a pivotal moment in the conflict. But the Russians have had nearly six months to prepare the ground – and build an elaborate array of defenses. Breaking through will present a huge challenge.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429111908-01-ukraine-defenses-satellite.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "Three rows of dragon's teeth and trenches, east of Vasylivka, Zaporozhzhia -- March 4",
+    "url": "/article/europe/10"
+  },
+  {
+    "id": 11,
+    "title": "North Korean leader’s sister attacks US-South Korea agreement",
+    "preview": "The influential sister of North Korean leader Kim Jong Un has hit back at a key agreement made between the US and South Korea, claiming it will only serve to worsen security.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429075723-kim-yo-jong-file-2022.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "Kim Yo Jong, sister of North Korean leader Kim Jong Un, delivers a speech in Pyongyang on August 10, 2022.",
+    "url": "/article/asia/11"
+  },
+  {
+    "id": 12,
+    "title": "Russian pilots tried to ‘dogfight’ US jets over Syria, US Central Command says",
+    "preview": "Russian pilots tried to “dogfight” US jets over Syria, according to a spokesman for US Central Command, part of a recent pattern of more aggressive behavior.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230428233057-01-f18-fighters-us-050818-file.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "Crew members of US aircraft carrier USS Harry S Truman stand beside an F18 Hornet fighter jet on the flight deck of the ship in the eastern Mediterranean Sea on May 8, 2018.",
+    "url": "/article/europe/12"
+  },
+  {
+    "id": 13,
+    "title": "Three injured in Syrian city of Homs after rocket attack",
+    "preview": "Three civilians were injured and a gas station set on fire early Saturday near the Syrian city of Homs in an attack that Syria blamed on Israeli rockets, Syria’s state news agency SANA reported, citing a military official.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429033849-01-homs-syria-attack-map.jpg?c=16x9&q=h_720,w_1280,c_fill",
+    "repImgDesc": "",
+    "url": "/article/world/13"
+  },
+  {
+    "id": 14,
+    "title": "Children among at least 23 killed in early-morning Russian strike on Ukrainian apartment block",
+    "preview": "Russia unleashed what is believed to have been the deadliest attack on Ukrainian civilians in months on Friday, killing at least 23 people in an early-morning missile strike on an apartment block in the city of Uman.",
+    "repImg": "https://media.cnn.com/api/v1/images/stellar/prod/230429150359-nic-robertson-in-uman.jpg?c=16x9&q=h_540,w_960,c_fill",
+    "repImgDesc": "CNN on scene after fatal Russian missile strike on apartment building",
+    "url": "/article/europe/14"
+  }
+]

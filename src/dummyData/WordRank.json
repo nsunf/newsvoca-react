@@ -1,0 +1,32 @@
+[
+  {
+    "id": 100001,
+    "text": "Alpha",
+    "definition": "알파",
+    "saved_cnt": 10000
+  },
+  {
+    "id": 100002,
+    "text": "Bravo",
+    "definition": "브라보",
+    "saved_cnt": 9000
+  },
+  {
+    "id": 100003,
+    "text": "Charli",
+    "definition": "찰리",
+    "saved_cnt": 8000
+  },
+  {
+    "id": 100004,
+    "text": "Delta",
+    "definition": "델타",
+    "saved_cnt": 7000
+  },
+  {
+    "id": 100005,
+    "text": "Echo",
+    "definition": "에코",
+    "saved_cnt": 6000
+  }
+]
