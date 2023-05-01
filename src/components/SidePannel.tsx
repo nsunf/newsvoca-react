@@ -45,12 +45,13 @@ export default function SidePannel() {
           <Logo
             color="primary"
             variant="h1"
-            sx={{ lineHeight: { xs: "40px", sm: "80px" }, fontSize: "24px" }}
+            lineHeight="0px"
+            fontSize="24px"
           >
             NewsVoca
           </Logo>
         </Link>
-        <SubTitle paragraph sx={{ lineHeight: { xs: "40px", sm: "80px" }, fontSize: "13px"}}>Lorem ipsum dolor sit amet.</SubTitle>
+        <SubTitle lineHeight="0px" fontSize="13px" paragraph>Lorem ipsum dolor sit amet.</SubTitle>
         <InfoIcon />
       </SidePannelInner>
     </SidePannelBox>

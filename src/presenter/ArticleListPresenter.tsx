@@ -1,12 +1,13 @@
-import { Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Divider, Grid, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
+import { Button, Card, CardActionArea, CardContent, CardMedia, Divider, Grid, List, ListItem, ListItemButton, ListItemText, SxProps, Typography } from "@mui/material";
 import Article from "../model/Article";
 import { Link as RouterLink } from "react-router-dom";
 import Word from "../model/Word";
+import React from "react";
 
-function ArticleLarge({ article, size, hasThumbnail }: { article: Article, size: "large"|"small", hasThumbnail: boolean }) {
+function ArticleList({ article, size, hasThumbnail }: { article: Article, size: "large"|"small", hasThumbnail: boolean }) {
   if (size === "large")
     return (
-      <ListItem>
+      <ListItem sx={{ paddingX: 1 }}>
         <Card sx={{ width: "100%", textDecoration: "none" }} component={RouterLink} to={article.url}>
           <CardActionArea>
             { hasThumbnail ? <CardMedia sx={{ height: 240 }} image={article.repImg} title={article.repImgDesc} />: null }
@@ -20,11 +21,11 @@ function ArticleLarge({ article, size, hasThumbnail }: { article: Article, size:
     );
   else
     return (
-      <ListItem>
+      <ListItem sx={{ paddingX: 1}}>
         <Card sx={{ width: "100%", textDecoration: "none" }} component={RouterLink} to={article.url}>
-          <CardActionArea sx={{ display: "flex", alignItems: "center" }}>
-            <CardMedia sx={{ height: 120, width: 120, flexShrink: 0, backgroundPosition: "center", backgroundsize: "cover", marginY: "40px" }} image={article.repImg} title={article.repImgDesc} />
-            <CardContent>
+          <CardActionArea sx={{ display: "flex", flexDirection: { xs: "row", sm: "column", xl: "row" }, alignItems: "center", justifyContent: "start" }}>
+            <CardMedia sx={{ width: { xs: 120, sm: "100%", xl: 120 } , aspectRatio: { xs: "1/1", sm: "16/9", xl: "1/1" }, flexShrink: 0, marginY: 0 }} image={article.repImg} title={article.repImgDesc} />
+            <CardContent sx={{ padding: "8px 16px", height: { xs: 120, sm: "initial", xl: 120 } }}>
               <Typography fontSize="1.1rem" fontWeight="bold">{article.title}</Typography>
             </CardContent>
           </CardActionArea>
@@ -33,55 +34,13 @@ function ArticleLarge({ article, size, hasThumbnail }: { article: Article, size:
     );
 }
 
-interface ArticleListProps {
-  articleList: Article[];
-  wordRankList: Word[];
-}
-
-export default function ArticleListPresenter(props: ArticleListProps) {
-  const { articleList, wordRankList } = props;
-
+function ExtraSection({ wordRankList, sx }: { wordRankList: Word[], sx?: SxProps }) {
   return (
-    <Grid container>
-
-      <Grid item xs={12} lg={8} xl={5} >
-        <List>
-        {
-          articleList
-            .filter((_, i) => i <= articleList.length/2)
-            .map((article, i) => 
-              <ArticleLarge
-                key={"article_" + article.id}
-                article={article}
-                size="large"
-                hasThumbnail={i === 0}
-              />
-            )
-        }
-        </List>
-      </Grid>
-
-      <Grid item xs={12} lg={4} xl={3}>
-        <List>
-        {
-          articleList
-            .filter((_, i) => i > articleList.length/2)
-            .map(article =>
-              <ArticleLarge
-                key={"article_" + article.id}
-                article={article}
-                size="small"
-                hasThumbnail={true}
-              />
-            )
-        }
-        </List>
-      </Grid>
-
-      <Grid item xs={4} sx={{ display: { xs: "none", xl: "flex" }, flexDirection: "column", gap: 8 }}>
-        <Card sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <List sx={sx}>
+      <ListItem sx={{ paddingX: 1 }}>
+        <Card sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <CardMedia
-            sx={{ width: "50%", aspectRatio: "1/1" }}
+            sx={{ width: "240px", aspectRatio: "1/1" }}
             image="/illustration/bonbon-line-child-solving-rubiks-cube-1.png"
             title="quiz_img"
           />
@@ -101,30 +60,35 @@ export default function ArticleListPresenter(props: ArticleListProps) {
             </Typography>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Typography variant="h6">단어 랭킹</Typography>
-            <Typography variant="caption">가장 많이 저장된 단어 랭킹</Typography>
-            <List sx={{ width: "70%" }}>
+      </ListItem>
+      <ListItem sx={{ paddingX: 1 }}>
+        <Card sx={{ width: "100%" }}>
+          <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "stretch" }}>
+            <Typography variant="h6" align="center">단어 랭킹</Typography>
+            <Typography variant="caption" align="center">가장 많이 저장된 단어 랭킹</Typography>
+            <List>
               {wordRankList.map((word, i) =>
-                <>
-                <ListItem key={"word_" + word.id} sx={{ padding: 0 }}>
-                  <ListItemButton alignItems="center">
-                    <ListItemText primary={i + 1 + ". " + word.text} />
-                    <ListItemText sx={{ textAlign: "end" }} primary={word.definition} />
-                  </ListItemButton>
-                </ListItem>
-                {i !== wordRankList.length - 1 ? <Divider /> : null}
-                </>
+                <React.Fragment key={"word_" + word.id}>
+                  <ListItem  sx={{ padding: 0 }}>
+                    <ListItemButton alignItems="center">
+                      <ListItemText primary={i + 1 + ". " + word.text} />
+                      <ListItemText sx={{ textAlign: "end" }} primary={word.definition} />
+                    </ListItemButton>
+                  </ListItem>
+                  {i !== wordRankList.length - 1 ? <Divider key={"divider_" + i} /> : null}
+                </React.Fragment>
               )}
             </List>
           </CardContent>
         </Card>
-        <Card sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <CardMedia sx={{ flexBasis: "40%", aspectRatio: "1/1" }} image="/illustration/bonbon-line-study-of-various-literature-1.png" title="scrapbook_img"/>
+      </ListItem>
+
+      <ListItem sx={{ padding: 1 }}>
+        <Card sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <CardMedia sx={{ width: 240, aspectRatio: "1/1" }} image="/illustration/bonbon-line-study-of-various-literature-1.png" title="scrapbook_img"/>
           <CardContent>
             <Button
-              sx={{ fontWeight: "bold", borderRadius: "24px" }}
+              sx={{ textAlign: "center", fontWeight: "bold", borderRadius: { xs: "50px", xl: "25px" }, wordBreak: "keep-all" }}
               variant="contained"
               size="large"
               component={RouterLink}
@@ -135,6 +99,60 @@ export default function ArticleListPresenter(props: ArticleListProps) {
             </Button>
           </CardContent>
         </Card>
+      </ListItem>
+    </List>
+  );
+}
+
+interface ArticleListProps {
+  articleList: Article[];
+  wordRankList: Word[];
+}
+
+export default function ArticleListPresenter(props: ArticleListProps) {
+  const { articleList, wordRankList } = props;
+
+  return (
+    <Grid container>
+
+      <Grid item xs={12} sm={8} xl={5} >
+        <List>
+        {
+          articleList
+            .filter((_, i) => i <= articleList.length/2)
+            .map((article, i) => 
+              <ArticleList
+                key={"article_" + article.id}
+                article={article}
+                size="large"
+                hasThumbnail={i === 0}
+              />
+            )
+        }
+        </List>
+
+        <ExtraSection wordRankList={wordRankList} sx={{ display: { xs: "block", xl: "none" } }} />
+      </Grid>
+
+      <Grid item xs={12} sm={4} xl={3}>
+        <List>
+        {
+          articleList
+            .filter((_, i) => i > articleList.length/2)
+            .map(article =>
+              <ArticleList
+                key={"article_" + article.id}
+                article={article}
+                size="small"
+                hasThumbnail={true}
+              />
+            )
+        }
+        </List>
+      </Grid>
+
+      <Grid item xs={12} xl={4} sx={{ display: { xs: "none", sm: "none", xl: "flex" }, flexDirection: "column", gap: 8 }}>
+        <ExtraSection wordRankList={wordRankList} />
       </Grid>
     </Grid>
   );
