@@ -39,7 +39,7 @@ function MajorCategories({ majorCatList, selectedCat }: { majorCatList: Category
             <Button
               sx={{ width: "100%", paddingX: "16px"}}
               component={RouterLink}
-              to={"/" + cat.name}
+              to={"/" + cat.pathname}
             >
               {cat.name}
             </Button>
@@ -61,7 +61,7 @@ function MinorCategories({ minorCatList }: { minorCatList: CategoryMinor[] }) {
         <Link
           key={"minor_cat_" + cat.id}
           component={RouterLink}
-          to={"/" + cat.categoryMajor.name + "/" + cat.name}
+          to={"/" + cat.categoryMajor.pathname + "/" + cat.pathname}
           underline="hover"
         >
           {cat.name}
@@ -94,7 +94,7 @@ function MobileCategories({ majorCatList, minorCatList, selectedCat }: { majorCa
             <Box sx={{ width: "100%" }}>
               <Button
                 component={RouterLink}
-                to={"/" + majCat.name}
+                to={"/" + majCat.pathname}
                 sx={{ width: "100%", fontWeight: "bold" }}
                 onClick={handleClose}
               >
@@ -105,7 +105,7 @@ function MobileCategories({ majorCatList, minorCatList, selectedCat }: { majorCa
                   <ListItemButton
                     key={"minor_cat_m_" + minCat.id}
                     component={RouterLink}
-                    to={"/" + minCat.categoryMajor.name + "/" + minCat.name}
+                    to={"/" + minCat.categoryMajor.pathname + "/" + minCat.pathname}
                     onClick={handleClose}
                     sx={{ paddingLeft: "40px", boxSizing: "content-box", fontSize: "13px"}}
                   >

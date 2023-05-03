@@ -3,9 +3,11 @@ import CategoryMajor from "../model/CategoryMajor";
 import CategoryMinor from "../model/CategoryMinor";
 import CategoryPresenter from "../presenter/CategoryPresenter";
 import { useEffect, useState } from "react";
-import categoryData from "../dummyData/Category.json";
+import categoryMajorData from "../dummyData/categoryMajorList.json";
+import categoryMinorData from "../dummyData/categoryMinorList.json";
 
-const { major: majorCatList, minor: minorCatList }: { major: CategoryMajor[], minor: CategoryMinor[] } = categoryData;
+const majorCatList: CategoryMajor[] = categoryMajorData;
+const minorCatList: CategoryMinor[] = categoryMinorData;
 
 interface State {
   majorCatList: CategoryMajor[];

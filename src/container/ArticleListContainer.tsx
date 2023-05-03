@@ -2,7 +2,7 @@ import Article from "../model/Article";
 import ArticleListPresenter from "../presenter/ArticleListPresenter";
 import Word from "../model/Word";
 
-import articleData from "../dummyData/Article.json";
+import articleData from "../dummyData/articleDtoList.json";
 import wordRankData from "../dummyData/WordRank.json";
 
 const articleList: Article[] = articleData;
