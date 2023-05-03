@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import SidePannel from './components/SidePannel';
 import Header from './components/Header';
 import Home from './routes/Home';
+import Article from './routes/Article';
 
 
 function App() {
@@ -21,16 +22,18 @@ function App() {
           maxWidth={false}
           disableGutters
         >
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Header />} />
             <Route path="/:majorCat" element={<Header />} />
             <Route path="/:majorCat/:minorCat" element={<Header />} />
-          </Routes>
+          </Routes> */}
+          <Header />
           <Container maxWidth={false}>
             <Routes>
               <Route path="/" element={<Home/>} />
               <Route path="/:majorCat" element={<Home/>} />
               <Route path="/:majorCat/:minorCat" element={<Home/>} />
+              <Route path="/article/:id/:cat/:slug" element={<Article />} />
             </Routes>
           </Container>
 

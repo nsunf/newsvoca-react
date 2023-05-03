@@ -35,7 +35,6 @@ export default function CategoryContainer() {
     const majorCat = (majorCatList.find(v => v.name === params.majorCat)) ?? (majorCatList.length > 0 ? majorCatList[0] : null);
     const minorCat = (minorCatList.find(v => v.name === params.minorCat)) ?? null;
 
-
     setState({
       majorCatList,
       minorCatList,
@@ -45,7 +44,7 @@ export default function CategoryContainer() {
       }
     });
 
-  }, [params]);
+  }, []);
 
   return (
     <>

@@ -1,4 +1,5 @@
-export default interface Paragraph {
-  id: number;
-  content: String;
+import ArticleContent from "./ArticleContent";
+
+export default interface Paragraph extends ArticleContent {
+  content: string;
 }
