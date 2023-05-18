@@ -6,6 +6,7 @@ import SidePannel from './components/SidePannel';
 import Header from './components/Header';
 import Home from './routes/Home';
 import Article from './routes/Article';
+import MyPage from './routes/MyPage';
 
 
 function App() {
@@ -27,16 +28,22 @@ function App() {
             <Route path="/:majorCat" element={<Header />} />
             <Route path="/:majorCat/:minorCat" element={<Header />} />
           </Routes> */}
-          <Header />
+          <Routes>
+            <Route path="/" element={<Header />} />
+            <Route path="/:majorCat" element={<Header />} />
+            <Route path="/:majorCat/:minorCat" element={<Header />} />
+            <Route path="/article/:id/:cat/:slug" element={<Header />} />
+            <Route path="/mypage/:id/*" element={null} />
+          </Routes>
           <Container maxWidth={false}>
             <Routes>
               <Route path="/" element={<Home/>} />
               <Route path="/:majorCat" element={<Home/>} />
               <Route path="/:majorCat/:minorCat" element={<Home/>} />
               <Route path="/article/:id/:cat/:slug" element={<Article />} />
+              <Route path="/mypage/:id/*" element={<MyPage />} />
             </Routes>
           </Container>
-
         </Container>
         {/* <Grid container sx={{ bgcolor: "orange", height: "1200px" }}>
           <Header />
