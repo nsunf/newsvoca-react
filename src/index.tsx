@@ -27,8 +27,12 @@ const theme = createTheme({
     },
     background: {
       default: "#ffffff"
-    }
-  },
+    },
+    grey: {
+      500: "#8a8a8a"
+    },
+    divider: "#8a8a8a"
+  }
 });
 
 root.render(

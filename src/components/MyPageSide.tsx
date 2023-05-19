@@ -15,7 +15,7 @@ function PageItem({ text, to }: { text: string, to: string }) {
 
 export default function MyPageSide() {
   return (
-    <Box sx={{ position: "sticky", top: 0, height: "100vh", borderRight: "1px solid rgba(0, 0, 0, 0.12)" }}>
+    <Box display={{ xs: "none", lg: "block" }} sx={{ position: "sticky", top: "64px", borderRight: "1px solid rgba(0, 0, 0, 0.12)" }}>
       <Box paddingY={2}>
         <Typography variant="h5" fontWeight="bold" paddingX={3}>MyPage</Typography>
       </Box>

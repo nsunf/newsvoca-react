@@ -6,10 +6,10 @@ import ScrabBookContainer from "../container/ScrabBookContainer";
 export default function MyPage() {
   return (
     <Grid container>
-      <Grid item xs={2}>
+      <Grid item xs={0} lg={2}>
         <MyPageSide />
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={12} lg={10}>
         <Routes>
           <Route path="/scrab-book" element={<ScrabBookContainer />}/>
         </Routes>

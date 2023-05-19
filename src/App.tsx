@@ -28,13 +28,7 @@ function App() {
             <Route path="/:majorCat" element={<Header />} />
             <Route path="/:majorCat/:minorCat" element={<Header />} />
           </Routes> */}
-          <Routes>
-            <Route path="/" element={<Header />} />
-            <Route path="/:majorCat" element={<Header />} />
-            <Route path="/:majorCat/:minorCat" element={<Header />} />
-            <Route path="/article/:id/:cat/:slug" element={<Header />} />
-            <Route path="/mypage/:id/*" element={null} />
-          </Routes>
+          <Header/>
           <Container maxWidth={false}>
             <Routes>
               <Route path="/" element={<Home/>} />
