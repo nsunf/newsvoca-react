@@ -1,30 +1,10 @@
-import { Box, Button, ButtonGroup, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, IconButton, InputBase, Link, Menu, MenuItem, Stack, Typography } from "@mui/material";
+import { useState } from "react";
+import { Box, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, IconButton, Link, ListItemIcon, Menu, MenuItem, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import useFoldableMenu from "../hooks/useFoldableMenu";
 
-import SearchIcon from '@mui/icons-material/Search';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-
-
-function SearchBar() {
-  return (
-    <Box 
-      width={{ xs: "100%", sm: "300px" }}
-      borderRadius={5}
-      border="solid"
-      borderColor="text.secondary"
-      mr={{ xs: 0, sm: 2 }}
-      mb={{ xs: 2, sm: 0 }}
-    >
-      <Stack direction="row">
-        <IconButton disabled>
-          <SearchIcon/>
-        </IconButton>
-        <InputBase sx={{ flexGrow: 1 }} placeholder="Search..."/>
-      </Stack>
-    </Box>
-  );
-}
+import DeleteIcon from '@mui/icons-material/Delete';
+import SearchBox from "../components/SearchBox";
 
 interface ScrabArticleProps {
   title: string;
@@ -35,6 +15,15 @@ interface ScrabArticleProps {
 }
 
 function ScrabArticle({ title, thumbnail, caption, pubDate, url }: ScrabArticleProps) {
+  const [anchor, setAnchor] = useState<HTMLElement|null>(null);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchor(e.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchor(null);
+  };
+
   return (
     <Grid item xs={12} lg={6}>
       <Card sx={{ position: "relative" }}>
@@ -55,9 +44,17 @@ function ScrabArticle({ title, thumbnail, caption, pubDate, url }: ScrabArticleP
           </Link>
         </CardActionArea>
         <CardActions sx={{ position: "absolute", top: "4px", right: "4px"}}>
-          <IconButton>
+          <IconButton onClick={handleClick}>
             <MoreHorizIcon />
           </IconButton>
+          <Menu anchorEl={anchor} open={anchor !== null} onClose={handleClose}>
+            <MenuItem onClick={handleClose}>
+              <ListItemIcon>
+                <DeleteIcon fontSize="small" color="error"/>
+              </ListItemIcon>
+              <Typography color="error">삭제</Typography>
+            </MenuItem>
+          </Menu>
         </CardActions>
       </Card>
     </Grid>
@@ -65,22 +62,9 @@ function ScrabArticle({ title, thumbnail, caption, pubDate, url }: ScrabArticleP
 }
 
 export default function ScrabBookPresenter() {
-  const [anchorEl, handleClick, handleClose] = useFoldableMenu();
   return (
     <>
-      <Box px={{ xs: 0, lg: 4 }} mt={3}>
-        <Stack flexDirection={{ sx: "column", sm: "row" }} justifyContent={{ xs: "space-between", lg: "end" }} alignItems={{ xs: "end", md: "initial" }}>
-          <SearchBar />
-          <ButtonGroup>
-            <Button onClick={handleClick} sx={{ color: "text.secondary" }}>정렬</Button>
-            <Menu anchorEl={anchorEl} open={anchorEl !== null} onClose={handleClose}>
-              <MenuItem onClick={handleClose}>이름</MenuItem>
-              <MenuItem onClick={handleClose}>날짜</MenuItem>
-            </Menu>
-            <Button sx={{ color: "text.secondary" }}>편집</Button>
-          </ButtonGroup>
-        </Stack>
-      </Box>
+      <SearchBox />
       <Grid container spacing={3} px={{ xs: 0, lg: 4}} my={2}>
         {[...new Array(15)].map((_, i) =>
           <ScrabArticle
