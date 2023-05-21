@@ -1,11 +1,13 @@
 import { Box, ButtonBase, Container, IconButton, List, ListItem, Stack, Typography } from "@mui/material";
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+
 import styled from "styled-components";
 import Paragraph from "../model/Paragraph";
 import Word from "../model/Word";
 import { TranslaterState } from "../features/translaterSlice";
+
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 const CustomBox = styled.div<{ gutter?: boolean }>`
   width: 100%;

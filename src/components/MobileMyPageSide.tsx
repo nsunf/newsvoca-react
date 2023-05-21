@@ -48,7 +48,7 @@ export default function MobileMyPageSide() {
           </Box>
           <List>
             <PageItem text="스크랩북" to="/mypage/1/scrab-book" icon={<FeedIcon />} onClick={onClose}/>
-            <PageItem text="단어장" to="/mypage/1/voca" icon={<BookIcon />} onClick={onClose}/>
+            <PageItem text="단어장" to="/mypage/1/voca/words" icon={<BookIcon />} onClick={onClose}/>
             <Collapse in={subListOpen}>
               <List sx={{ pl: 5 }} disablePadding>
                 <SubPageItem text="단어" to="/mypage/1/voca/words" onClick={onClose} />

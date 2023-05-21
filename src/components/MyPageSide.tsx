@@ -32,7 +32,7 @@ export default function MyPageSide() {
       </Box>
       <List>
         <PageItem text="스크랩북" to="/mypage/1/scrab-book" icon={<FeedIcon/>} />
-        <PageItem text="단어장" to="/mypage/1/voca" icon={<BookIcon />} />
+        <PageItem text="단어장" to="/mypage/1/voca/words" icon={<BookIcon />} />
         <Collapse in={isOpen}>
           <List sx={{ pl: 5 }} disablePadding>
             <SubPageItem text="단어" to="/mypage/1/voca/words" />
