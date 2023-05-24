@@ -17,6 +17,9 @@ export default function Header() {
           <Route path="/:majorCat" element={<CategoryContainer />} />
           <Route path="/:majorCat/:minorCat" element={<CategoryContainer />} />
           <Route path="/article/:id/:cat/:slug" element={<CategoryContainer />} />
+          <Route path="/login" element={null} />
+          <Route path="/signup" element={null} />
+          <Route path="/findmy/:type" element={null} />
         </Routes>
         <HeaderProfileContainer />
         <MobileMyPageSide />

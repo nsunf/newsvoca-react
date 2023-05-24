@@ -29,6 +29,7 @@ const theme = createTheme({
       default: "#ffffff"
     },
     grey: {
+      100: "#F4F4F4",
       500: "#8a8a8a"
     },
     divider: "#8a8a8a"

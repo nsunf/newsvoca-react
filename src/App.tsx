@@ -7,6 +7,9 @@ import Header from './components/Header';
 import Home from './routes/Home';
 import Article from './routes/Article';
 import MyPage from './routes/MyPage';
+import LoginContainer from './container/LoginContainer';
+import SignupContainer from './components/SignupContainer';
+import FindMyContainer from './components/FindMyContainer';
 
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
               <Route path="/:majorCat/:minorCat" element={<Home/>} />
               <Route path="/article/:id/:cat/:slug" element={<Article />} />
               <Route path="/mypage/:id/*" element={<MyPage />} />
+              <Route path="/login" element={<LoginContainer />} />
+              <Route path="/signup" element={<SignupContainer />} />
+              <Route path="/findmy/:type" element={<FindMyContainer />} />
             </Routes>
           </Container>
         </Container>
