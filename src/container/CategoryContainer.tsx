@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+import CategoryPresenter from "../presenter/CategoryPresenter";
+
 import CategoryMajor from "../model/CategoryMajor";
 import CategoryMinor from "../model/CategoryMinor";
-import CategoryPresenter from "../presenter/CategoryPresenter";
-import { useEffect, useState } from "react";
+
 import categoryMajorData from "../dummyData/categoryMajorList.json";
 import categoryMinorData from "../dummyData/categoryMinorList.json";
 
@@ -32,8 +35,8 @@ export default function CategoryContainer() {
   const [state, setState] = useState<State>(initialState);
 
   useEffect(() => {
-    const majorCat = (majorCatList.find(v => v.name === params.majorCat)) ?? (majorCatList.length > 0 ? majorCatList[0] : null);
-    const minorCat = (minorCatList.find(v => v.name === params.minorCat)) ?? null;
+    const majorCat = (majorCatList.find(v => v.pathname === params.majorCat)) ?? (majorCatList.length > 0 ? majorCatList[0] : null);
+    const minorCat = (minorCatList.find(v => v.pathname === params.minorCat)) ?? null;
 
     setState({
       majorCatList,
@@ -43,8 +46,7 @@ export default function CategoryContainer() {
         minor: minorCat
       }
     });
-
-  }, []);
+  }, [params]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, Slice, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Paragraph from "../model/Paragraph";
 import Word from "../model/Word";
 
@@ -37,7 +37,7 @@ export const selectWord = createAsyncThunk(
   }
 );
 
-export const translaterSlice = createSlice({
+export const translaterSlice: Slice = createSlice({
   name: "translater",
   initialState,
   reducers: {

@@ -1,16 +1,24 @@
-import { Button, Card, CardActionArea, CardContent, CardMedia, Divider, Grid, List, ListItem, ListItemButton, ListItemText, SxProps, Typography } from "@mui/material";
-import Article from "../model/Article";
-import { Link as RouterLink } from "react-router-dom";
-import Word from "../model/Word";
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-function ArticleList({ article, size, hasThumbnail }: { article: Article, size: "large"|"small", hasThumbnail: boolean }) {
+import { Button, Card, CardActionArea, CardContent, CardMedia, Divider, Grid, List, ListItem, ListItemButton, ListItemText, SxProps, Typography } from "@mui/material";
+
+import Article from "../model/Article";
+import Word from "../model/Word";
+
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+
+function ArticleList({ article, size, hideThumbnail = false }: { article: Article, size: "large"|"small", hideThumbnail?: boolean }) {
   if (size === "large")
     return (
       <ListItem sx={{ paddingX: 1 }}>
         <Card sx={{ width: "100%", textDecoration: "none" }} component={RouterLink} to={article.url}>
           <CardActionArea>
-            { hasThumbnail ? <CardMedia sx={{ height: 240 }} image={article.repImg} title={article.repImgDesc} />: null }
+            { article.repImg !== null && !hideThumbnail ?
+              <CardMedia sx={{ height: 240 }} image={article.repImg} title={article.repImgDesc ?? ""} />
+              :
+              null
+            }
             <CardContent>
               <Typography fontSize="1.1rem" fontWeight="bold">{article.title}</Typography>
               <Typography variant="body2">{article.preview}</Typography>
@@ -24,9 +32,16 @@ function ArticleList({ article, size, hasThumbnail }: { article: Article, size: 
       <ListItem sx={{ paddingX: 1}}>
         <Card sx={{ width: "100%", textDecoration: "none" }} component={RouterLink} to={article.url}>
           <CardActionArea sx={{ display: "flex", flexDirection: { xs: "row", sm: "column", xl: "row" }, alignItems: "center", justifyContent: "start" }}>
-            <CardMedia sx={{ width: { xs: 120, sm: "100%", xl: 120 } , aspectRatio: { xs: "1/1", sm: "16/9", xl: "1/1" }, flexShrink: 0, marginY: 0 }} image={article.repImg} title={article.repImgDesc} />
-            <CardContent sx={{ padding: "8px 16px", height: { xs: 120, sm: "initial", xl: 120 } }}>
-              <Typography fontSize="1.1rem" fontWeight="bold">{article.title}</Typography>
+            {
+              article.repImg !== null && !hideThumbnail ?
+                <CardMedia sx={{ width: { xs: 120, sm: "100%", xl: 120 } , aspectRatio: { xs: "1/1", sm: "16/9", xl: "1/1" }, flexShrink: 0, marginY: 0 }} image={article.repImg} title={article.repImgDesc ?? ""} />
+                : 
+                <CardMedia sx={{ width: { xs: 120, sm: "100%", xl: 120 } , aspectRatio: { xs: "1/1", sm: "16/9", xl: "1/1" }, flexShrink: 0, marginY: 0 }}>
+                  <NewspaperIcon sx={{ width: "100%", height: "100%", p: 2 }} color="secondary" />
+                </CardMedia>
+            }
+            <CardContent sx={{ flexGrow: 1, padding: "8px 16px", height: { xs: 120, sm: "initial", xl: 120 } }}>
+              <Typography fontSize="1.1rem" fontWeight="bold" sx={{ width: "100%", height: "100%", overflow: "hidden"  }}>{article.title}</Typography>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -125,7 +140,7 @@ export default function ArticleListPresenter(props: ArticleListProps) {
                 key={"article_" + article.id}
                 article={article}
                 size="large"
-                hasThumbnail={i === 0}
+                hideThumbnail={i !== 0}
               />
             )
         }
@@ -144,7 +159,6 @@ export default function ArticleListPresenter(props: ArticleListProps) {
                 key={"article_" + article.id}
                 article={article}
                 size="small"
-                hasThumbnail={true}
               />
             )
         }

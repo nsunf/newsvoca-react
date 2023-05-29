@@ -1,25 +1,19 @@
 import { AppBar, Toolbar } from "@mui/material";
-import styled from "styled-components";
 import CategoryContainer from "../container/CategoryContainer";
 import HeaderProfileContainer from "../container/HeaderProfileContainer";
 import { Route, Routes } from "react-router-dom";
 import MobileMyPageSide from "./MobileMyPageSide";
 
-const HeaderBox = styled(AppBar)`
-`;
-
 export default function Header() {
   return (
-    <AppBar position="sticky" color="secondary" sx={{ boxShadow: "none" }}>
+    <AppBar position="sticky" sx={{ boxShadow: "none", bgcolor: "common.white" }}>
       <Toolbar>
         <Routes>
           <Route path="/" element={<CategoryContainer />} />
           <Route path="/:majorCat" element={<CategoryContainer />} />
           <Route path="/:majorCat/:minorCat" element={<CategoryContainer />} />
           <Route path="/article/:id/:cat/:slug" element={<CategoryContainer />} />
-          <Route path="/login" element={null} />
-          <Route path="/signup" element={null} />
-          <Route path="/findmy/:type" element={null} />
+          <Route path="/auth/*" element={null} />
         </Routes>
         <HeaderProfileContainer />
         <MobileMyPageSide />

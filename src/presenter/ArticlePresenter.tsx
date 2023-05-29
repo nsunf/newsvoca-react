@@ -1,33 +1,58 @@
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Card, CardMedia, Container, IconButton, Stack, SxProps, Typography } from "@mui/material";
 import ArticleContent from "../model/ArticleContent";
 import ArticleDetail from "../model/ArticleDetail";
 import ArticleImg from "../model/ArticleImg";
 import Paragraph from "../model/Paragraph";
-import { Fragment } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import { TranslaterState } from "../features/translaterSlice";
+import styled from "styled-components";
 
-const Title = ({ text }: { text: string }) =>
-  <Box>
+const WordTypo = styled.span<{ selected: boolean }>`
+  transition: 500ms;
+  color: ${({ selected }) => selected ? "red" : "inherit"};
+  &::after {
+    content: " ";
+  }
+`;
+
+const ParagraphTypo = ({ selected, istitle, onClick, children }: { selected: boolean, istitle?: string, onClick: () => void, children: React.ReactNode }) =>
     <Typography
-      fontSize="40px"
-      fontWeight="bold"
-      variant="h1"
-      sx={{ marginBottom: 2}}
+      sx={{
+        cursor: "pointer",
+        border: "1px solid transparent",
+        borderRadius: "4px",
+        color: selected ? "success.main" : "initial",
+        p: istitle ? null : "8px",
+        fontSize: istitle ? "40px" : null,
+        fontWeight: istitle ? "bold" : null,
+        mb: istitle ? "16px" : null,
+        ":hover": {
+          color: "success.main",
+          border: "1px solid",
+        }
+      }}
+      onClick={onClick}
     >
-      {text}
+      {children}
     </Typography>
-    <Stack direction="row" justifyContent="end">
-      <IconButton>
-        <VolumeUpIcon />
-      </IconButton>
-      <IconButton>
-        <BookmarkBorderIcon />
-      </IconButton>
-    </Stack>
-  </Box>
+;
+
+function Title({ paragraph, clickHandler, translaterState }: { paragraph: Paragraph, clickHandler: ClickHandler, translaterState: TranslaterState }) {
+  return (
+    <Box>
+      <ParagraphContent paragraph={paragraph} clickHandler={clickHandler} translaterState={translaterState} />
+      <Stack direction="row" justifyContent="end">
+        <IconButton>
+          <BookmarkBorderIcon />
+        </IconButton>
+      </Stack>
+    </Box>
+  );
+}
 ;
 
 const Info = ({ author, publishDate }: { author: string, publishDate: string }) => 
@@ -37,8 +62,7 @@ const Info = ({ author, publishDate }: { author: string, publishDate: string }) 
   </Stack>
 ;
 
-const ImgContent = ({ img, clickHandler }: { img: ArticleImg, clickHandler: ClickHandler }) => {
-  const { onClickParagraph, onClickWord } = clickHandler;
+const ImgContent = ({ img }: { img: ArticleImg }) => {
   return (
     <Card>
       <CardMedia 
@@ -47,81 +71,66 @@ const ImgContent = ({ img, clickHandler }: { img: ArticleImg, clickHandler: Clic
         image={img.url}
         alt={img.caption}
       />
-      {/* {img.caption ?
-        <CardContent sx={{ padding: 0, paddingBottom: "0 !important"}}>
-          <Typography
-            sx={{
-              cursor: "pointer",
-              border: "1px solid transparent",
-              transition: "500ms",
-              ":hover": {
-                color: "green",
-                border: "1px solid #8a8a8a"
-              }
-            }}
-            p="16px"
-            fontSize="14px"
-          >
-            {img.caption.split(" ").map((word, i) =>
-              <Fragment key={"caption_" + img.id + "_word_" + i}><span key={"article_img_caption_" + img.id}>{word}</span> </Fragment>
-            )}
-          </Typography>
-        </CardContent>
-        : null
-      } */}
     </Card>
   );
 };
 
-const WordContent = ({ word, onClickWord }: { word: string, onClickWord: (str: string) => void }) => {
+function WordContent ({ word, onClickWord, translaterState }: { word: string, onClickWord: (str: string) => void, translaterState: TranslaterState }) {
+  const [ isSelected, setIsSelected ] = useState(false); 
+  const [ flag, setFlag ] = useState(false);
+
+  useEffect(() => {
+    if (flag) setFlag(false);
+    else setIsSelected(false);
+  }, [translaterState]);
+
+  const onClickWordHandler = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setFlag(true);
+    setIsSelected(true);
+    onClickWord(word);
+  }, [onClickWord, word]);
+
   return (
-    <Fragment><span onContextMenu={e => { e.preventDefault(); onClickWord(word)}}>{word}</span> </Fragment>
+    <WordTypo selected={isSelected} onContextMenu={onClickWordHandler}>{word}</WordTypo>
   )
 };
 
-const ParagraphContent = ({ paragraph, clickHandler }: { paragraph: Paragraph, clickHandler: ClickHandler }) => {
+function ParagraphContent({ paragraph, clickHandler, translaterState }: { paragraph: Paragraph, clickHandler: ClickHandler, translaterState: TranslaterState }) {
   const { onClickParagraph, onClickWord } = clickHandler;
+  const [ isSelected, setIsSelected ] = useState(false);
+  const [ flag, setFlag ] = useState(false);
+
+  useEffect(() => {
+    if (flag) setFlag(false);
+    else setIsSelected(false);
+  }, [translaterState]);
+
+  const onClickParagraphHandler = useCallback(() => {
+    setFlag(true);
+    setIsSelected(true);
+    onClickParagraph(paragraph);
+  }, [onClickParagraph, paragraph]);
 
   return (
     <Box marginY={2}>
-      <Typography
-        sx={{
-          cursor: "pointer",
-          border: "1px solid transparent",
-          borderRadius: 2 ,
-          transition: "500ms",
-          ":hover": {
-            color: "green",
-            border: "1px solid #8a8a8a"
-          }
-        }}
-        padding="8px"
-        onClick={() => onClickParagraph(paragraph)}
-      >
+      <ParagraphTypo selected={isSelected} istitle={paragraph.titleYN === "Y" ? "istitle" : undefined} onClick={onClickParagraphHandler}>
         {paragraph.content.split(" ").map((word, i) =>
-          <WordContent key={"paragraph_" + paragraph.id + "_word_" + i} word={word} onClickWord={onClickWord} />
-          // <Fragment key={"paragraph_" + paragraph.id + "_word_" + i}><span onContextMenu={e => { e.preventDefault(); onClickWord(word)}}>{word}</span> </Fragment>
+          <WordContent key={"paragraph_" + paragraph.id + "_word_" + i} word={word} onClickWord={onClickWord} translaterState={translaterState}/>
         )}
-      </Typography>
+      </ParagraphTypo>
     </Box>
   );
 };
 
-function Content({ articleContent, clickHandler }: { articleContent: ArticleContent, clickHandler: ClickHandler }) {
+function Content({ articleContent, clickHandler, translaterState }: { articleContent: ArticleContent, clickHandler: ClickHandler, translaterState: TranslaterState }) {
   if ("caption" in articleContent && "url" in articleContent) {
-    return <ImgContent img={articleContent as ArticleImg} clickHandler={clickHandler} />
+    return <ImgContent img={articleContent as ArticleImg} />
   } else if ("content" in articleContent) {
-    return <ParagraphContent paragraph={articleContent as Paragraph} clickHandler={clickHandler} />;
+    return <ParagraphContent paragraph={articleContent as Paragraph} clickHandler={clickHandler} translaterState={translaterState} />;
   }
 
   return null;
-}
-
-interface ArticlePresenterProps {
-  articleDetail: ArticleDetail;
-  articleContents: ArticleContent[];
-  
-  clickHandler: ClickHandler;
 }
 
 interface ClickHandler {
@@ -129,26 +138,36 @@ interface ClickHandler {
   onClickWord: (str: string) => void;
 }
 
+interface ArticlePresenterProps {
+  articleDetail: ArticleDetail|null;
+  
+  clickHandler: ClickHandler;
+  translaterState: TranslaterState;
+}
+
 export default function ArticlePresenter(props: ArticlePresenterProps) {
   const {
     articleDetail,
-    articleContents,
-    clickHandler
+    clickHandler,
+    translaterState
   } = props;
+
+  if (articleDetail === null) return null;
 
   return (
     <Container sx={{ paddingX: 2 }} maxWidth={false} disableGutters>
-      <Title text={articleDetail.title} />
+      <Title paragraph={articleDetail.title} clickHandler={clickHandler} translaterState={translaterState} />
       <Info
         author={"By " + articleDetail.authorArr.join(", ")}
         publishDate={articleDetail.publishDate}
       />
       <Container disableGutters maxWidth={false}>
-        {articleContents.map(content =>
+        {articleDetail.contents.map(content =>
           <Content
             key={"article_content_" + content.id}
             articleContent={content}
             clickHandler={clickHandler}
+            translaterState={translaterState}
           />)}
       </Container>
     </Container>

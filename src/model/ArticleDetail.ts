@@ -1,7 +1,11 @@
+import ArticleContent from "./ArticleContent";
+import Paragraph from "./Paragraph";
+
 export default interface ArticleDetail {
   id: number;
-  title: string;
   publishDate: string;
   authorArr: string[];
   view: number;
+  title: Paragraph;
+  contents: ArticleContent[];
 }

@@ -1,36 +1,38 @@
 import ArticlePresenter from "../presenter/ArticlePresenter";
 
-import ArticleDetail from "../model/ArticleDetail";
-import ArticleContent from "../model/ArticleContent";
+import { uesAppSelector, useAppDispatch } from "../store";
+import { selectParagraph, selectWord } from "../features/translaterSlice";
 
 import articleDetailData from "../dummyData/articleDetailDto.json";
-import articleContentsData from "../dummyData/articleContents.json";
-import { useAppDispatch } from "../store";
-import { selectParagraph, selectWord } from "../features/translaterSlice";
-import { useCallback } from "react";
+
+import ArticleDetail from "../model/ArticleDetail";
 import Paragraph from "../model/Paragraph";
-
-
-
-const articleDetail: ArticleDetail = articleDetailData;
-const articleContents: ArticleContent[] = articleContentsData;
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function ArticleContainer() {
+  const params = useParams();
+  const [articleDetail, setArticleDetail] = useState<ArticleDetail|null>(null);
+
   const dispatch = useAppDispatch();
+  const translaterState = uesAppSelector(state => state.translater);
 
-  const onClickParagraph = useCallback((p: Paragraph) => {
-    dispatch(selectParagraph(p));
-  }, [dispatch]);
+  const onClickParagraph = (p: Paragraph) => dispatch(selectParagraph(p));
+  const onClickWord = (str: string) => dispatch(selectWord(str));
 
-  const onClickWord = useCallback((str: string) => {
-    dispatch(selectWord(str));
-  }, [dispatch]);
+  useEffect(() => {
+    if (params.id) {
+      const articleId = parseInt(params.id);
+      const filteredDetail = (articleDetailData as ArticleDetail[]).filter(detail => detail.id === articleId);
+      if (filteredDetail.length > 0) setArticleDetail(filteredDetail[0]);
+    }
+  }, [params]);
   
   return (
     <ArticlePresenter 
       articleDetail={articleDetail}
-      articleContents={articleContents}
       clickHandler={{ onClickParagraph, onClickWord }}
+      translaterState={translaterState}
     />
   );
 }

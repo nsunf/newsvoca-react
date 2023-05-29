@@ -5,8 +5,8 @@ export default function HeaderProfilePresenter() {
   return (
     <>
     <Stack direction="row" gap="8px" flexGrow={1} justifyContent="end">
-      <Button component={Link} to="/login">Login</Button>
-      <Button component={Link} to="/signup">Signup</Button>
+      <Button component={Link} to="/auth/login">Login</Button>
+      <Button component={Link} to="/auth/signup">Signup</Button>
     </Stack>
     {/* <Box>
       <IconButton component={Link} to="/profile">

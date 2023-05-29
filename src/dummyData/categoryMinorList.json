@@ -1,1 +1,56 @@
-[{"id":6,"name":"Africa","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"africa"},{"id":7,"name":"Americas","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"americas"},{"id":8,"name":"Asia","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"asia"},{"id":9,"name":"Australia","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"australia"},{"id":10,"name":"China","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"china"},{"id":11,"name":"Europe","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"europe"},{"id":12,"name":"India","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"india"},{"id":13,"name":"Middle East","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"middleeast"},{"id":14,"name":"United Kingdom","categoryMajor":{"id":1,"name":"World","pathname":"world"},"pathname":"uk"}]
+[
+  {
+    "id": 6,
+    "name": "Africa",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "africa"
+  },
+  {
+    "id": 7,
+    "name": "Americas",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "americas"
+  },
+  {
+    "id": 8,
+    "name": "Asia",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "asia"
+  },
+  {
+    "id": 9,
+    "name": "Australia",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "australia"
+  },
+  {
+    "id": 10,
+    "name": "China",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "china"
+  },
+  {
+    "id": 11,
+    "name": "Europe",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "europe"
+  },
+  {
+    "id": 12,
+    "name": "India",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "india"
+  },
+  {
+    "id": 13,
+    "name": "Middle East",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "middleeast"
+  },
+  {
+    "id": 14,
+    "name": "United Kingdom",
+    "categoryMajor": { "id": 1, "name": "World", "pathname": "world" },
+    "pathname": "uk"
+  }
+]
