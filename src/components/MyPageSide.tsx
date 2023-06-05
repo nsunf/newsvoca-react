@@ -31,7 +31,7 @@ export default function MyPageSide() {
         <Typography variant="h5" fontWeight="bold" paddingX={3}>MyPage</Typography>
       </Box>
       <List>
-        <PageItem text="스크랩북" to="/mypage/1/scrab-book" icon={<FeedIcon/>} />
+        <PageItem text="스크랩북" to="/mypage/1/scrap-book" icon={<FeedIcon/>} />
         <PageItem text="단어장" to="/mypage/1/voca/words" icon={<BookIcon />} />
         <Collapse in={isOpen}>
           <List sx={{ pl: 5 }} disablePadding>

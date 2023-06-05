@@ -1,5 +1,4 @@
 import { Card, CardActionArea, Grid, Typography } from "@mui/material";
-import SearchBox from "../components/SearchBox";
 
 const sample = [
   "The majestic oak tree stood tall and proud, its branches reaching towards the sky, providing shade for the weary travelers.",
@@ -36,23 +35,20 @@ const sample = [
 
 export default function SentencePresenter() {
   return (
-    <>
-      <SearchBox />
-      <Grid container p={{ xs: 0, lg: 2 }} my={2} spacing={2}>
-        {
-          sample.map((p, i) => 
-            <Grid item xs={12} md={6} key={p.slice(0, 7) + "_" + i}>
-              <Card variant="outlined">
-                <CardActionArea>
-                  <Typography p={2} variant="body1">
-                    {p}
-                  </Typography>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          )
-        }
-      </Grid>
-    </>
+    <Grid container p={{ xs: 0, lg: 2 }} my={2} spacing={2}>
+      {
+        sample.map((p, i) => 
+          <Grid item xs={12} md={6} key={p.slice(0, 7) + "_" + i}>
+            <Card variant="outlined">
+              <CardActionArea>
+                <Typography p={2} variant="body1">
+                  {p}
+                </Typography>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        )
+      }
+    </Grid>
   );
 }

@@ -1,6 +1,5 @@
 import { Box, Button, Chip, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
-import SearchBox from "../components/SearchBox";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import ClearIcon from '@mui/icons-material/Clear';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
@@ -78,44 +77,41 @@ export default function VocaPresenter() {
   }, []);
 
   return (
-    <>
-      <SearchBox />
-      <Box p={4}>
-        {
-          Array.from(wordMap.entries())
-            .map(([alphabet, list], i) => <WordList key={alphabet + i} alphabet={alphabet} list={list} openDialog={openDialog} />)
-        }
-        <Dialog
-          open={open}
-          onClose={closeDialog}
-          maxWidth="sm"
-          fullWidth
-        >
-          <DialogTitle display="flex" justifyContent="space-between">
-            selected word
-            <IconButton onClick={closeDialog}>
-              <ClearIcon />
+    <Box p={4}>
+      {
+        Array.from(wordMap.entries())
+          .map(([alphabet, list], i) => <WordList key={alphabet + i} alphabet={alphabet} list={list} openDialog={openDialog} />)
+      }
+      <Dialog
+        open={open}
+        onClose={closeDialog}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle display="flex" justifyContent="space-between">
+          selected word
+          <IconButton onClick={closeDialog}>
+            <ClearIcon />
+          </IconButton>
+        </DialogTitle>
+        <Divider sx={{ px: 2 }} />
+        <DialogContent>
+          <Box>
+            <Typography>Alpha</Typography>
+            <Typography>알파</Typography>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Stack direction="row" justifyContent="space-between">
+            <IconButton>
+              <VolumeUpIcon />
             </IconButton>
-          </DialogTitle>
-          <Divider sx={{ px: 2 }} />
-          <DialogContent>
-            <Box>
-              <Typography>Alpha</Typography>
-              <Typography>알파</Typography>
-            </Box>
-          </DialogContent>
-          <DialogActions>
-            <Stack direction="row" justifyContent="space-between">
-              <IconButton>
-                <VolumeUpIcon />
-              </IconButton>
-              <IconButton>
-                <BookmarkIcon />
-              </IconButton>
-            </Stack>
-          </DialogActions>
-        </Dialog>
-      </Box>
-    </>
+            <IconButton>
+              <BookmarkIcon />
+            </IconButton>
+          </Stack>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 }

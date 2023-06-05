@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import MyPageSide from "../components/MyPageSide";
 import { Route, Routes } from "react-router-dom";
 
-import ScrabBookContainer from "../container/ScrabBookContainer";
+import ScrapBookContainer from "../container/ScrapBookContainer";
 import VocaContainer from "../container/VocaContainer";
 import SentenceContainer from "../container/SentenceContainer";
 import SettingContainer from "../container/SettingContainer";
@@ -16,7 +16,7 @@ export default function MyPage() {
       </Grid>
       <Grid item xs={12} lg={10}>
         <Routes>
-          <Route path="/scrab-book" element={<ScrabBookContainer />}/>
+          <Route path="/scrap-book" element={<ScrapBookContainer />}/>
           <Route path="/voca/words" element={<VocaContainer />}/>
           <Route path="/voca/sentences" element={<SentenceContainer />}/>
           <Route path="/setting" element={<SettingContainer />}/>

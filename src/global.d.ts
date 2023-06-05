@@ -22,3 +22,5 @@ declare module "*.gif" {
   const value: any;
   export default value;
 }
+
+type SortMode = "NAME_ASC"|"NAME_DESC"|"PUB_ASC"|"PUB_DESC"|"REG_ASC"|"REG_DESC";

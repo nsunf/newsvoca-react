@@ -82,7 +82,7 @@ export default function SignupContainer() {
     const checkPhone2 = /\d{4}/.test(signupState.phone2.value);
     const checkPhone3 = /\d{4}/.test(signupState.phone3.value);
     const checkPassword1 = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\!\?\@\#\$\%\^\&\*\?]).{8,20}$/.test(signupState.password1.value);
-    const checkPassword2 = signupState.password1.value === signupState.password2.value;
+    const checkPassword2 = (signupState.password1.value === signupState.password2.value && signupState.password2.value.replaceAll(" ", "") !== "");
 
     const checkName = signupState.name.value.replaceAll(" ", "") !== "";
     const checkAddress1 = signupState.address1.value.replaceAll(" ", "") !== "";
